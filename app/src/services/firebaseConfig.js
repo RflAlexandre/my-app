@@ -1,10 +1,10 @@
+// Firebase v9+ - IMPORTAÇÕES MODULARES
 import { initializeApp } from 'firebase/app';
-import { getAuth } from 'firebase/auth';
+import { initializeAuth, getReactNativePersistence } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
-import { getStorage } from 'firebase/storage';
-import { getFunctions } from 'firebase/functions';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-// SUAS CONFIGURAÇÕES DO FIREBASE
+// ⚠️ SUBSTITUA COM SUAS CONFIGURAÇÕES DO FIREBASE ⚠️
 const firebaseConfig = {
   apiKey: "SUA_API_KEY_AQUI",
   authDomain: "SEU_PROJETO.firebaseapp.com",
@@ -14,18 +14,16 @@ const firebaseConfig = {
   appId: "SEU_APP_ID"
 };
 
-// Inicializar Firebase
+// Inicializar Firebase App
 const app = initializeApp(firebaseConfig);
 
-// Exportar serviços
-export const auth = getAuth(app);
-export const db = getFirestore(app);
-export const storage = getStorage(app);
-export const functions = getFunctions(app);
+// Inicializar Auth com AsyncStorage para persistência
+const auth = initializeAuth(app, {
+  persistence: getReactNativePersistence(AsyncStorage)
+});
 
-// Configuração para desenvolvimento local
-if (__DEV__) {
-  // Conectar ao emulador se estiver em desenvolvimento
-  // import { connectAuthEmulator } from 'firebase/auth';
-  // connectAuthEmulator(auth, 'http://localhost:9099');
-}
+// Inicializar Firestore
+const db = getFirestore(app);
+
+// Exportar
+export { auth, db };

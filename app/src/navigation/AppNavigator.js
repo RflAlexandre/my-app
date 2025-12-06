@@ -8,10 +8,10 @@ import { MaterialIcons } from '@expo/vector-icons';
 import SplashScreen from '../screens/SplashScreen';
 import LoginScreen from '../screens/LoginScreen';
 import HomeScreen from '../screens/HomeScreen';
-import ScheduleScreen from '../screens/ScheduleScreen';
-import PromotionsScreen from '../screens/PromotionsScreen';
-import BarbersScreen from '../screens/BarbersScreen';
-import ProfileScreen from '../screens/ProfileScreen';
+// import ScheduleScreen from '../screens/ScheduleScreen';
+// import PromotionsScreen from '../screens/PromotionsScreen';
+// import BarbersScreen from '../screens/BarbersScreen';
+// import ProfileScreen from '../screens/ProfileScreen';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
